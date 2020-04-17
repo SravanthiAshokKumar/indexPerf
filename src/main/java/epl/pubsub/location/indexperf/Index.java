@@ -2,7 +2,7 @@ package epl.pubsub.location.indexperf;
 
 import java.util.List;
 
-interface Index {
+public interface Index {
 
     void createIndex(double minX, double minY, double maxX,double maxY, double incr);
 
