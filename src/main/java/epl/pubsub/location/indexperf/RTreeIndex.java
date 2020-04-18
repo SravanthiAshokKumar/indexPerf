@@ -52,6 +52,15 @@ class RTreeIndex implements Index{
         log.info("Created rtree with " + rtreeIndex.size());
     }
 
+    @Override 
+    public String getStringValue(double x, double y){
+        //TODO fix this method
+        List<String> matches = getNearestNeighbors(x,y);
+        if(matches.size() > 0){
+            return matches.get(0);
+        }
+        return "";
+    }
 
     @Override
     public List<String> getNearestNeighbors(double x, double y){

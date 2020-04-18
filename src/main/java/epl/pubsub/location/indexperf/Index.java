@@ -9,4 +9,6 @@ public interface Index {
     long getIndexSize();
     
     List<String> getNearestNeighbors(double x, double y);    
+
+    String getStringValue(double x, double y);    
 }

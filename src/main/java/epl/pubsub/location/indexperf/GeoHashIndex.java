@@ -48,6 +48,11 @@ class GeoHashIndex implements Index {
     }
 
 
+    @Override 
+    public String getStringValue(double x, double y){
+        return GeoHash.withCharacterPrecision(x, y, hashPrecision).toBase32();
+    }
+
     @Override
     public List<String> getNearestNeighbors(double x, double y){
         GeoHash gh = GeoHash.withCharacterPrecision(x, y, hashPrecision);
