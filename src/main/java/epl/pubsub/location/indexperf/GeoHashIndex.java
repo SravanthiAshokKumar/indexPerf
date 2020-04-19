@@ -14,7 +14,7 @@ import java.util.Properties;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
  
-public class GeoHashIndex implements Index {
+class GeoHashIndex implements Index {
     Logger log = Logger.getLogger(GeoHashIndex.class);
     
     Trie<String, List<String>> spatialIndex;    

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Properties;
 
-public class RTreeIndex implements Index{
+class RTreeIndex implements Index{
 
     private RTree<String, Geometry> rtreeIndex;
     private int numRandomChars;

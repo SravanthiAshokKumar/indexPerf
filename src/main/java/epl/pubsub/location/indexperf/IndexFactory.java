@@ -2,7 +2,7 @@ package epl.pubsub.location.indexperf;
 
 import java.util.Properties;
 
-class IndexFactory {
+public class IndexFactory {
 
     public enum IndexType{
         GEOHASH,
