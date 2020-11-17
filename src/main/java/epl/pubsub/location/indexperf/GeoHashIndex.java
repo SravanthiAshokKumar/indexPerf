@@ -35,15 +35,16 @@ class GeoHashIndex implements Index {
             for(double y = minY; y <= maxY; y += incr){
                 GeoHash gh = GeoHash.withCharacterPrecision(x, y, hashPrecision);
                 String key = gh.toBase32();
-                //GeoHash[] neighbors = gh.getAdjacent();
+                
+                GeoHash[] neighbors = gh.getAdjacent();
                 List<String> vals = new ArrayList<>();
-                /*for(int i =0; i < neighbors.length; ++i){
+                for(int i =0; i < neighbors.length; ++i){
                     vals.add(neighbors[i].toBase32());
-                }*/
+                }
                 spatialIndex.put(key, vals);
             }
         }
-        //System.out.println("index size = " + spatialIndex.size());
+        System.out.println("index size = " + spatialIndex.size());
         log.info("index size = " + spatialIndex.size());
     }
 
@@ -57,11 +58,7 @@ class GeoHashIndex implements Index {
     public List<String> getNearestNeighbors(double x, double y){
         GeoHash gh = GeoHash.withCharacterPrecision(x, y, hashPrecision);
         String prefix = gh.toBase32().substring(0, hashPrecision - 1);
-        SortedMap<String, List<String>> prefixMap = spatialIndex.prefixMap(prefix);
-        List<String> nearestNeighbors = new ArrayList<>();
-        for (Map.Entry<String, List<String>> entry : prefixMap.entrySet()) {
-                nearestNeighbors.add(entry.getKey());
-        }
+        List<String> nearestNeighbors = spatialIndex.get(gh.toBase32());
         return nearestNeighbors;
     }
 
