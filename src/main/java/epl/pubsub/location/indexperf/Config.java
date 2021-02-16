@@ -5,4 +5,5 @@ class Config {
     public double minY;
     public double maxY;
     public double incr;
+    public int precision;
 }

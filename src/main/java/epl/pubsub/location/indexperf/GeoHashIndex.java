@@ -19,9 +19,9 @@ class GeoHashIndex implements Index {
     
     Trie<String, List<String>> spatialIndex;    
     int hashPrecision;
-    public GeoHashIndex(Properties properties){
+    public GeoHashIndex(Properties properties, int precision){
         spatialIndex = new PatriciaTrie<>();
-        hashPrecision = 8;
+        hashPrecision = precision;
         if(properties.containsKey("maxCharPrecision")){
             hashPrecision = (int)properties.get("maxCharPrecision");
         }
@@ -59,6 +59,9 @@ class GeoHashIndex implements Index {
         GeoHash gh = GeoHash.withCharacterPrecision(x, y, hashPrecision);
         String prefix = gh.toBase32().substring(0, hashPrecision - 1);
         List<String> nearestNeighbors = spatialIndex.get(gh.toBase32());
+        // if (nearestNeighbors != null) {
+        //     nearestNeighbors.forEach(s -> s = s+"_topic");
+        // }
         return nearestNeighbors;
     }
 

@@ -42,7 +42,9 @@ public class IndexRunner
             double maxY = config.maxY;
             double maxX = config.maxX; 
             double incr = config.incr;
-            Index index = IndexFactory.getInitializedIndex(minX, minY, maxX, maxY, incr, type, props);
+            int precision = config.precision;
+            Index index = IndexFactory.getInitializedIndex(minX, minY, maxX,
+                maxY, incr, type, props, precision);
             return index; 
     }
 

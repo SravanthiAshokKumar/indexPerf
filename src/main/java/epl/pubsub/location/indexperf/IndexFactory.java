@@ -8,10 +8,12 @@ public class IndexFactory {
         GEOHASH,
         RTREE;
     }
-    public static Index getInitializedIndex(double minX, double minY, double maxX, double maxY, double incr, IndexType indexType, Properties props ){
+    public static Index getInitializedIndex(double minX, double minY,
+        double maxX, double maxY, double incr, IndexType indexType,
+        Properties props, int precision){
         
         if(indexType == IndexType.GEOHASH){
-            Index index = new GeoHashIndex(props);
+            Index index = new GeoHashIndex(props, precision);
             index.createIndex(minX, minY, maxX, maxY, incr);
             return index;
         }
@@ -22,6 +24,4 @@ public class IndexFactory {
         }
         return null;
     }
-
-
 }
