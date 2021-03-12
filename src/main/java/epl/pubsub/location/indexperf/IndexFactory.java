@@ -10,10 +10,10 @@ public class IndexFactory {
     }
     public static Index getInitializedIndex(double minX, double minY,
         double maxX, double maxY, double incr, IndexType indexType,
-        Properties props, int precision){
+        Properties props){
         
         if(indexType == IndexType.GEOHASH){
-            Index index = new GeoHashIndex(props, precision);
+            Index index = new GeoHashIndex(props);
             index.createIndex(minX, minY, maxX, maxY, incr);
             return index;
         }
