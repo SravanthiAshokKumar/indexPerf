@@ -62,7 +62,6 @@ class GeoHashIndex implements Index {
         // if (nearestNeighbors != null) {
         //     nearestNeighbors.forEach(s -> s = s+"_topic");
         // }
-        System.out.println("size: "+nearestNeighbors.size());
         return nearestNeighbors;
     }
 
